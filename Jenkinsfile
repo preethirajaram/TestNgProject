@@ -14,6 +14,13 @@ pipeline {
 
             }
          }
+        stage('Deploy') {
+            steps {
+                // Run Maven on a Unix agent.
+               echo "Deply message"
+
+            }
+         }
         stage('Test') {
             steps {
                 // Run Maven on a Unix agent.
@@ -22,12 +29,6 @@ pipeline {
             }
          }
         
-         stage('Deploy') {
-            steps {
-                // Run Maven on a Unix agent.
-               echo "Deply message"
-
-            }
-         }
+         
     }
 }
