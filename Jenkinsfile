@@ -14,5 +14,12 @@ pipeline {
 
             }
          }
+        stage('Test') {
+            steps {
+                // Run Maven on a Unix agent.
+                sh "mvn test"
+
+            }
+         }
     }
 }
