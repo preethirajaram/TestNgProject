@@ -21,5 +21,13 @@ pipeline {
 
             }
          }
+        
+         stage('Deploy') {
+            steps {
+                // Run Maven on a Unix agent.
+               echo "Deply message"
+
+            }
+         }
     }
 }
