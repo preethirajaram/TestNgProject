@@ -9,29 +9,31 @@ pipeline {
     stages {
         stage('Sanity') {
             steps {
-                sh "mvn clean"
+                // To run Maven on a Windows agent, use
+                bat "mvn clean"
                 echo "Sanity Suite message"
 
             }
             post {
                 success {
                     echo "Sanity Suite Success Report"
-                    testng '**/target/testng-reports/*.*'
-                    archiveArtifacts 'target/*.jar'
+                    //  testng '**/target/testng-reports/*.*'
+                    //  archiveArtifacts 'target/*.jar'
                 }
             }
          }
         stage('Regression') {
             steps {
-                // Run Maven on a Unix agent.
+               // To run Maven on a Windows agent, use
+               bat "mvn clean"
                echo "Regression Suite message"
 
             }
             post {
                 success {
                     echo "Regression Suite Success Report"
-                    testng '**/target/testng-reports/*.*'
-                    archiveArtifacts 'target/*.jar'
+                    //  testng '**/target/testng-reports/*.*'
+                    //  archiveArtifacts 'target/*.jar'
                 }
             }
          }        
