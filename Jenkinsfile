@@ -7,28 +7,33 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Sanity') {
             steps {
-                // Run Maven on a Unix agent.
                 sh "mvn clean"
+                echo "Sanity Suite message"
 
             }
+            post {
+                success {
+                    echo "Sanity Suite Success Report"
+                    testng '**/target/testng-reports/*.*'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
          }
-        stage('Deploy') {
+        stage('Regression') {
             steps {
                 // Run Maven on a Unix agent.
-               echo "Deply message"
+               echo "Regression Suite message"
 
             }
-         }
-        stage('Test') {
-            steps {
-                // Run Maven on a Unix agent.
-                sh "mvn test"
-
+            post {
+                success {
+                    echo "Regression Suite Success Report"
+                    testng '**/target/testng-reports/*.*'
+                    archiveArtifacts 'target/*.jar'
+                }
             }
-         }
-        
-         
+         }        
     }
 }
