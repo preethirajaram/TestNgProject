@@ -9,8 +9,8 @@ pipeline {
     stages {
         stage('Sanity') {
             steps {
-                // To run Maven on a Windows agent, use
-                bat "mvn clean"
+                // Run Maven on a Unix agent.
+                sh "mvn clean"
                 echo "Sanity Suite message"
 
             }
@@ -24,8 +24,8 @@ pipeline {
          }
         stage('Regression') {
             steps {
-               // To run Maven on a Windows agent, use
-               bat "mvn clean"
+              // Run Maven on a Unix agent.
+               sh "mvn clean"
                echo "Regression Suite message"
 
             }
